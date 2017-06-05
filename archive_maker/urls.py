@@ -20,6 +20,6 @@ from django.http import HttpResponseRedirect
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^archive/', include('apps.archive.urls')),
-#    url(r'^session/', include('apps.session.urls')),
-#    url(r'^$/', lambda x: HttpResponseRedirect('/session/')),
+    url(r'^session/', include('apps.session.urls')),
+    url(r'^$', lambda x: HttpResponseRedirect('/session/')),
 ]

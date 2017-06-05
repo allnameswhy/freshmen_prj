@@ -18,7 +18,10 @@ class TableListView(ListView):
 class TableCreateView(TemplateView):
     pk_url_kwarg = 'table_no'
     template_name = "table_create.html"
-
+   
+    def get(self, request, *args, **kwargs):
+        return self.render_to_response({'table_form': TableForm(prefix='TableForm_prefix'), 'column_form': ColumnForm(prefix='ColumnForm_prefix')})
+ 
     def post(self, request, *args, **kwargs):
         table_form = _get_form(request, TableForm, 'TableForm_prefix')
         column_form = _get_form(request, ColumnForm, 'ColumnForm_prefix')
@@ -27,8 +30,8 @@ class TableCreateView(TemplateView):
             table_instance = table_form.save()
             column_instance = column_form.save()
             table_instance.Columns.add(column_instance) # resolve many-to-one relationship
-            column_instance.serial_no = table_instance.column_num # update s
-            table_instance.column_num = table_instance.column_num + 1
+            column_instance.serial_no = table_instance.column_num # update column serial number
+            table_instance.column_num = table_instance.column_num + 1 # update table column number for next column
 
         return self.render_to_response({'table_form':table_form, 'column_form':column_form})
 
