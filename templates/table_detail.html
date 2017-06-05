@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+</head>
+
+<body>
+  <h1>{{ object.title }}</h1>
+  <p>{{ object.description }}</p>
+  {% for item in object.Item.all %}
+    {% for column in item.columns %}
+        <div>{{ column.content }}</div>
+    {% empty %}
+        <h3>no content yet</h3>
+    {% endfor %}
+  {% empty %}
+    <li>no columns yet</li>
+  {% endfor %}
+</body>
+</html>
