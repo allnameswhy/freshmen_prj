@@ -1,0 +1,66 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.background {
+    background-image: url('/media/img/home.png');
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.login-button {
+    background: none;
+    border: none;
+    background-image: url('/media/img/login_button.png');
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    left: 53%;
+    top: 56%;
+}
+
+.start-now-button {
+    background: none;
+    border: none;
+    background-image: url('/media/img/start_now_button.png');
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    right: 53%;
+    top: 56%;
+}
+
+.header-button {
+    background: none;
+    border: none;
+    background-image: url('/media/img/header.png');
+    width: 603px;
+    height: 146px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    left: 80px;
+}
+
+.header {
+    background-color: #77c531;
+    width: 100%;
+    height: 146px;
+    position: relative;
+}
