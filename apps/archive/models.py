@@ -21,12 +21,12 @@ class Table(models.Model):  # a unit of an archive
     )
     description = models.TextField()
     last_modified = models.DateTimeField()
-    column_num = 1
-    item_num = 1
-
-    def column_incr(self):
-        self.column_num = self.column_num + 1
-    hb
+    column_num = models.IntegerField(
+        initial=1,
+    )
+    item_num = models.IntegerField(
+        intitial=1,
+    )
 
     def __str__(self):
         return self.title
@@ -39,6 +39,9 @@ class TableForm(ModelForm):
 
 
 class Column(models.Model):
+    serial_no = models.IntegerField(
+        initial=1,
+    )
     column_name = models.CharField(
         max_length=50,
     )
@@ -51,6 +54,7 @@ class Column(models.Model):
         related_name="Columns",
         null=False,
         blank=False,
+        on_delete=models.CASCADE,
     )
 
 
@@ -69,6 +73,7 @@ class Item(models.Model): # a row of a table
         related_name="Item",
         null=False,
         blank=False,
+        on_delete=models.CASCADE
     )
 
 
@@ -78,7 +83,8 @@ class ColumnNumber(models.Model, Column):  # column type 0 : numbering (notice :
         Item,
         related_name="ColumnNumber",
         null=False,
-        blank=False
+        blank=False,
+        on_delete = models.CASCADE
     )
 
     def __str__(self):
@@ -90,7 +96,8 @@ class ColumnName(models.Model, Column):    # column type 1 : a simple name
         Item,
         related_name="ColumnName",
         null=False,
-        blank=False
+        blank=False,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
@@ -103,7 +110,8 @@ class ColumnText(models.Model, Column):    # column type 2 : text without charac
         Item,
         related_name="ColumnText",
         null=False,
-        blank=False
+        blank=False,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
@@ -119,7 +127,8 @@ class ColumnImage(models.Model, Column):   # column type 3 : image
         Item,
         related_name="ColumnImage",
         null=False,
-        blank=False
+        blank=False,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
@@ -135,7 +144,8 @@ class ColumnFile(models.Model, Column): # column type 4 : file upload
         Item,
         related_name="ColumnFile",
         null=False,
-        blank=False
+        blank=False,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
@@ -149,7 +159,8 @@ class ColumnLocation(models.Model, Column): # column type 5 : location using goo
         Item,
         related_name="ColumnLocation",
         null=False,
-        blank=False
+        blank=False,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):

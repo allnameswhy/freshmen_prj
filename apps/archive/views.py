@@ -22,11 +22,15 @@ class TableCreateView(TemplateView):
     def post(self, request, *args, **kwargs):
         table_form = _get_form(request, TableForm, 'TableForm_prefix')
         column_form = _get_form(request, ColumnForm, 'ColumnForm_prefix')
+
         if table_form.is_bound and table_form.is_valid() and column_form.is_bound and column_form.is_valid():
             table_instance = table_form.save()
             column_instance = column_form.save()
-            table_instance.Columns.add(column_instance)
+            table_instance.Columns.add(column_instance) # resolve many-to-one relationship
+            column_instance.serial_no = table_instance.column_num # update s
+            table_instance.column_num = table_instance.column_num + 1
 
+        return self.render_to_response({'table_form':table_form, 'column_form':column_form})
 
 
 class TableDetailView(DetailView):

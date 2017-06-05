@@ -6,10 +6,12 @@
 </head>
 <body>
 
-<form action="" method="">
+<form action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" />
+    {{ table_form.as_p }}
+    <input type="submit" name="{{ table_form.prefix }}"  value="Submit" />
+    {{ column_form.as_p }}
+    <input type="submit" name="{{ column_form.prefix }}" value="Submit" />
 </form>
 
 </body>
