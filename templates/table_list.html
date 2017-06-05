@@ -5,14 +5,16 @@
     <title>Archive List</title>
 </head>
 <body>
-
-<h1> Archives</h1>
-<ul>
-    {% for object in object_list %}
-        <li><a href ="{% url 'detail-table' table_no=object.id %}"> {{ object.title }} </a>/</li>
-    {% empty %}
-         <li>No table yet.</li>
-    {% endfor %}
-</ul>
+    <div class="header">
+        <a href="/" class="header-button"></a>
+    </div>
+    <h1> Archives</h1>
+    <ul>
+        {% for object in object_list %}
+            <li><a href ="{% url 'detail-table' table_no=object.id %}"> {{ object.title }} </a>/</li>
+        {% empty %}
+            <li>No table yet.</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

@@ -6,16 +6,19 @@
 </head>
 
 <body>
-  <h1>{{ object.title }}</h1>
-  <p>{{ object.description }}</p>
-  {% for item in object.Item.all %}
-    {% for column in item.columns %}
-        <div>{{ column.content }}</div>
+    <div class="header">
+        <a href="/" class="header-button"></a>
+    </div>
+    <h1>{{ object.title }}</h1>
+    <p>{{ object.description }}</p>
+    {% for item in object.Item.all %}
+        {% for column in item.columns %}
+            <div>{{ column.content }}</div>
+        {% empty %}
+            <h3>no content yet</h3>
+        {% endfor %}
     {% empty %}
-        <h3>no content yet</h3>
+        <li>no columns yet</li>
     {% endfor %}
-  {% empty %}
-    <li>no columns yet</li>
-  {% endfor %}
 </body>
 </html>
