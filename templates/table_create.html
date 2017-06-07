@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Archive Maker</title>
+    <link rel="stylesheet" type="text/css" href="/media/css/global.css"/>
 </head>
 <body>
 
 <form action="" method="post">
     {% csrf_token %}
-    {{ table_form.as_p }}
-    <input type="submit" name="{{ table_form.prefix }}"  value="Submit" />
-    {{ column_form.as_p }}
-    <input type="submit" name="{{ column_form.prefix }}" value="Submit" />
+    {{ form.as_p }}
+    <input  type="submit" value="Submit" />
 </form>
 
 </body>

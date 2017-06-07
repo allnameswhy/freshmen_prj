@@ -21,5 +21,10 @@
     {% empty %}
         <li>no columns yet</li>
     {% endfor %}
+    
+    <form action="{% url 'delete-table' table_no=object.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete" />
+    </form>
 </body>
 </html>

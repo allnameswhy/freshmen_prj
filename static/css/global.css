@@ -7,6 +7,10 @@ body {
     height: 100%;
 }
 
+.none {
+    display: none !important;
+}
+
 .background {
     background-image: url('/media/img/home.png');
     width: 100%;

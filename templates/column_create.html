@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Makerr</title>
+    <link rel="stylesheet" type="text/css" href="/media/css/global.css"/>
+</head>
+<body>
+
+    <form action="{% url 'update-table' table_no=table.id %}" method="post">
+    {% csrf_token %}
+    {% for form in form_list %}
+      {{ form.as_p }}
+      <input type="submit" name="{{ form.prefix }}"  value="Submit" />
+      {% empty %}
+      <p>No form list</p>
+    {% endfor %}
+</form>
+</body>
+</html>
